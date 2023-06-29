@@ -15,16 +15,16 @@ class EquipmentResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
+            'id' => $this['id'],
             'equipment_type' => [
-                'id' => $this->equipment_type->id,
-                'name' => $this->equipment_type->name,
-                'mask' => $this->equipment_type->mask,
+                'id' => $this['equipmentType']['id'],
+                'name' => $this['equipmentType']['name'],
+                'mask' => $this['equipmentType']['mask'],
             ],
-            'serial_number' => $this->serial_number,
-            'desc' => $this->desc,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'serial_number' => $this['serial_number'],
+            'desc' => $this['desc'],
+            'created_at' => $this['created_at'],
+            'updated_at' => $this['updated_at'],
         ];
     }
 }

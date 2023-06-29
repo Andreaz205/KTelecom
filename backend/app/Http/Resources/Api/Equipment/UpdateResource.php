@@ -5,7 +5,7 @@ namespace App\Http\Resources\Api\Equipment;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class StoreSuccessResource extends JsonResource
+class UpdateResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,7 +15,7 @@ class StoreSuccessResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            $this['key'] => EquipmentResource::make($this['item'])->resolve()
+            'success' => EquipmentResource::make($this)->resolve()
         ];
     }
 }

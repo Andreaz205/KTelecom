@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Equipment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Equipment\UpdateRequest;
 use App\Http\Resources\Api\Equipment\EquipmentResource;
+use App\Http\Resources\Api\Equipment\UpdateResource;
 use App\Http\Services\ValidationService;
 use App\Models\Equipment;
 use App\Models\EquipmentType;
@@ -35,6 +36,6 @@ class UpdateController extends Controller
             ]);
         $equipment->update($data);
         $equipment->refresh();
-        return Response::json(['success' => EquipmentResource::make($equipment)->resolve()]);
+        return UpdateResource::make($equipment)->resolve();
     }
 }

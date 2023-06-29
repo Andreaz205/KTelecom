@@ -20,7 +20,7 @@ class PaginatedEquipmentListController extends Controller
             $paginatedEquipment = Equipment::query()
                 ->where('serial_number', 'ilike', '%'.$q.'%')
                 ->orWhere('desc', 'ilike', '%'.$q.'%')
-                ->orWhereHas('equipment_type', function ($query) use($q) {
+                ->orWhereHas('equipmentType', function ($query) use($q) {
                     $query->where('name', 'ilike', '%'.$q.'%');
                 })->paginate($this->perPage);
         } else {

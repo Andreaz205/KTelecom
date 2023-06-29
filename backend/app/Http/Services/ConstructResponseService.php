@@ -18,9 +18,4 @@ class ConstructResponseService
             'errors' => $errorItems ?? [],
         ];
     }
-
-    private function keyValueResource($key, $resource)
-    {
-
-    }
 }

@@ -12,7 +12,7 @@ class Equipment extends Model
 {
     use HasFactory, SoftDeletes, Filterable;
 
-    public function equipment_type(): BelongsTo
+    public function equipmentType(): BelongsTo
     {
         return $this->belongsTo(EquipmentType::class);
     }

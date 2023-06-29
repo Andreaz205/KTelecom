@@ -16,12 +16,10 @@ use Illuminate\Support\Facades\Response;
 class StoreController extends Controller
 {
     private ValidationService $validationService;
-    private ConstructResponseService $responseService;
 
-    public function __construct(ValidationService $validationService, ConstructResponseService $responseService)
+    public function __construct(ValidationService $validationService)
     {
         $this->validationService = $validationService;
-        $this->responseService = $responseService;
     }
 
     public function __invoke(StoreRequest $request)
@@ -64,6 +62,10 @@ class StoreController extends Controller
             Log::error($exception->getMessage());
             return Response::json(['message' => 'Непредвиденная ошибка'], 500);
         }
-        return $this->responseService->storeEquipmentResource($result['success'], $result['errors']);
+        $responseData = [
+            'success' => $result['success'],
+            'errors' => $result['errors']
+        ];
+        return StoreResource::make($responseData)->resolve();
     }
 }
